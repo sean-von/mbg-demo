@@ -7,7 +7,9 @@ import org.mybatis.generator.api.IntrospectedColumn;
 import org.mybatis.generator.api.IntrospectedTable;
 import org.mybatis.generator.api.dom.java.Field;
 import org.mybatis.generator.api.dom.java.InnerClass;
+import org.mybatis.generator.api.dom.java.Method;
 import org.mybatis.generator.api.dom.java.TopLevelClass;
+import org.mybatis.generator.api.dom.xml.XmlElement;
 import org.mybatis.generator.internal.DefaultCommentGenerator;
 import org.mybatis.generator.internal.util.StringUtility;
 
@@ -48,13 +50,21 @@ public class CustomCommentGenerator extends DefaultCommentGenerator {
 
         String remarks = introspectedColumn.getRemarks();
         if (addRemarkComments && StringUtility.stringHasValue(remarks)) {
-            String[] remarkLines = remarks.split(System.getProperty("line.separator"));  
+            String[] remarkLines = remarks.split(System.getProperty("line.separator"));
             for (String remarkLine : remarkLines) {
-                field.addJavaDocLine(" * " + remarkLine);  
+                field.addJavaDocLine(" * " + remarkLine);
             }
         }
 
         field.addJavaDocLine(" */");
+    }
+
+    @Override
+    public void addFieldComment(Field field, IntrospectedTable introspectedTable) {
+    }
+
+    @Override
+    public void addGeneralMethodComment(Method method, IntrospectedTable introspectedTable) {
     }
 
     @Override
@@ -64,18 +74,7 @@ public class CustomCommentGenerator extends DefaultCommentGenerator {
 
     @Override
     public void addClassComment(InnerClass innerClass, IntrospectedTable introspectedTable, boolean markAsDoNotDelete) {
-        if (suppressAllComments) {
-            return;
-        }
-
-        innerClass.addJavaDocLine("/**"); 
-
-        StringBuilder sb = new StringBuilder();
-        sb.append(introspectedTable.getFullyQualifiedTable());
-        innerClass.addJavaDocLine(sb.toString());
-        addJavadocTag(innerClass, markAsDoNotDelete);
-
-        innerClass.addJavaDocLine(" */"); 
+        return;
     }
 
     @Override
@@ -84,23 +83,36 @@ public class CustomCommentGenerator extends DefaultCommentGenerator {
             return;
         }
 
-        topLevelClass.addJavaDocLine("/**"); 
+        topLevelClass.addJavaDocLine("/**");
 
         String remarks = introspectedTable.getRemarks();
         if (addRemarkComments && StringUtility.stringHasValue(remarks)) {
-            topLevelClass.addJavaDocLine(" * Database Table Remarks:"); 
-            String[] remarkLines = remarks.split(System.getProperty("line.separator"));  
+            topLevelClass.addJavaDocLine(" * Database Table Remarks:");
+            String[] remarkLines = remarks.split(System.getProperty("line.separator"));
             for (String remarkLine : remarkLines) {
-                topLevelClass.addJavaDocLine(" *   " + remarkLine);  
+                topLevelClass.addJavaDocLine(" *   " + remarkLine);
             }
         }
 
-        StringBuilder sb = new StringBuilder();
-        sb.append(" * Table Name : "); 
-        sb.append(introspectedTable.getFullyQualifiedTable());
-        topLevelClass.addJavaDocLine(sb.toString());
-        addJavadocTag(topLevelClass, false);
-
-        topLevelClass.addJavaDocLine(" */"); 
+        topLevelClass.addJavaDocLine(" * WARNING : Auto Generated Code, do not Modify!");
+        topLevelClass.addJavaDocLine(" * <p>");
+        topLevelClass.addJavaDocLine(" * Created by Mybatis Generator on " + getDateString() + ".");
+        topLevelClass.addJavaDocLine(" */");
     }
+
+    @Override
+    public void addSetterComment(Method method, IntrospectedTable introspectedTable,
+                                 IntrospectedColumn introspectedColumn) {
+    }
+
+    @Override
+    public void addGetterComment(Method method, IntrospectedTable introspectedTable,
+                                 IntrospectedColumn introspectedColumn) {
+    }
+
+    @Override
+    public void addComment(XmlElement xmlElement) {
+        return;
+    }
+
 }

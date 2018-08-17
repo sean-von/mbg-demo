@@ -9,10 +9,15 @@
 
     <context id="mysql" targetRuntime="MyBatis3">
 
+        <plugin type="org.mybatis.generator.plugins.EqualsHashCodePlugin"/>
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
+        <plugin type="org.mybatis.generator.plugins.ToStringPlugin"/>
+        <plugin type="org.mybatis.generator.plugins.FluentBuilderMethodsPlugin"/>
+
         <!-- 设置注释信息 -->
         <commentGenerator type="com.smikevon.easy.mbg.custom.CustomCommentGenerator">
             <property name="addRemarkComments" value="true"/>
-            <property name="dateFormat" value="yyyy-MM-dd HH:mm:ss"/>
+            <property name="dateFormat" value="yyyy/MM/dd"/>
         </commentGenerator>
 
         <jdbcConnection driverClass="${jdbc.driverClass}"
@@ -32,7 +37,7 @@
         </sqlMapGenerator>
 
 
-        <table tableName="entrustment">
+        <table tableName="%">
             <!-- 将下划线命名的 table column，转换为驼峰命名 -->
             <property name="useActualColumnNames" value="false"/>
         </table>
