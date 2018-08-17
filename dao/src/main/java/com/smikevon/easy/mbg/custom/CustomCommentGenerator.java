@@ -112,7 +112,6 @@ public class CustomCommentGenerator extends DefaultCommentGenerator {
 
     @Override
     public void addComment(XmlElement xmlElement) {
-        return;
     }
 
 }

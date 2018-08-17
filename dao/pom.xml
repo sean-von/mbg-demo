@@ -6,23 +6,30 @@
         <artifactId>mbg-demo</artifactId>
         <groupId>com.smikevon.easy</groupId>
         <version>1.0-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>dao</artifactId>
+    <name>dao</name>
+    <packaging>jar</packaging>
 
     <dependencies>
+        <dependency>
+            <groupId>com.smikevon.easy</groupId>
+            <artifactId>model</artifactId>
+        </dependency>
         <dependency>
             <groupId>org.mybatis</groupId>
             <artifactId>mybatis</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.mybatis.generator</groupId>
-            <artifactId>mybatis-generator-core</artifactId>
-        </dependency>
-        <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.mybatis.generator</groupId>
+            <artifactId>mybatis-generator-core</artifactId>
         </dependency>
     </dependencies>
 
@@ -45,9 +52,6 @@
                     <execution>
                         <id>Generate MyBatis Artifacts</id>
                         <phase>process-resources</phase>
-                        <!--<goals>
-                            <goal>generate</goal>
-                        </goals>-->
                     </execution>
                 </executions>
                 <configuration>
@@ -65,7 +69,7 @@
                         <artifactId>model</artifactId>
                         <version>1.0-SNAPSHOT</version>
                         <scope>system</scope>
-                        <!-- 注意，这里是你的 dao 包地址 -->
+                        <!-- 注意，这里是你的 mapper 包地址 -->
                         <systemPath>
                             /Users/fengxiao/.m2/repository/com/smikevon/easy/dao/1.0-SNAPSHOT/dao-1.0-SNAPSHOT.jar
                         </systemPath>

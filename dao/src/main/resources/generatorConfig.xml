@@ -8,11 +8,12 @@
     <properties resource="filters/filter-dev.properties"/>
 
     <context id="mysql" targetRuntime="MyBatis3">
-
+        
         <plugin type="org.mybatis.generator.plugins.EqualsHashCodePlugin"/>
         <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
         <plugin type="org.mybatis.generator.plugins.ToStringPlugin"/>
         <plugin type="org.mybatis.generator.plugins.FluentBuilderMethodsPlugin"/>
+
 
         <!-- 设置注释信息 -->
         <commentGenerator type="com.smikevon.easy.mbg.custom.CustomCommentGenerator">
@@ -26,8 +27,13 @@
                         password="${jdbc.passWord}">
         </jdbcConnection>
 
+        <!-- 涉及到DB中存在 DECIMAL 和 NUMERIC 类型时，用 BigDecimal 类型进行映射 -->
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="true"/>
+        </javaTypeResolver>
+
         <!-- 标准写法 targetProject 应为 MAVEN,这里为了便于验证，将路径直接写到目的文件夹  -->
-        <javaModelGenerator targetPackage="com.smikevon.easy.mbg.domain" targetProject="src/main/java">
+        <javaModelGenerator targetPackage="com.smikevon.easy.model.entity" targetProject="../model/src/main/java">
             <property name="enableSubPackages" value="true"/>
             <property name="trimStrings" value="true"/>
         </javaModelGenerator>
@@ -35,7 +41,6 @@
         <sqlMapGenerator targetPackage="mappers/generated" targetProject="src/main/resources">
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
-
 
         <table tableName="%">
             <!-- 将下划线命名的 table column，转换为驼峰命名 -->

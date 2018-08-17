@@ -13,7 +13,7 @@ mybatis-generator-demo
 
 1. 生成 model & xml.
 2. 定制 枚举类 TypeHandler，在 row mapper 中直接映射为枚举. 
-3. 生成 dao -> 定制通用 dao.
+3. 生成 dao -> 定制通用 dao, 加入 page-helper 分页插件
 4. 集成 spring boot.
 5. 接入自成长 id.
 6. 定制带超时时间的 local cache.
