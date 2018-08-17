@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>mbg-demo</artifactId>
+        <groupId>com.smikevon.easy</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>dao</artifactId>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.mybatis.generator</groupId>
+            <artifactId>mybatis-generator-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <filters>
+            <filter>src/main/resources/filters/filter-${environment}.properties</filter>
+        </filters>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+        <plugins>
+            <plugin>
+                <groupId>org.mybatis.generator</groupId>
+                <artifactId>mybatis-generator-maven-plugin</artifactId>
+                <version>${mybatis-generator.version}</version>
+                <executions>
+                    <execution>
+                        <id>Generate MyBatis Artifacts</id>
+                        <phase>process-resources</phase>
+                        <!--<goals>
+                            <goal>generate</goal>
+                        </goals>-->
+                    </execution>
+                </executions>
+                <configuration>
+                    <overwrite>true</overwrite>
+                    <verbose>true</verbose>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>mysql</groupId>
+                        <artifactId>mysql-connector-java</artifactId>
+                        <version>${mysql-driver.version}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>com.smikevon.easy</groupId>
+                        <artifactId>model</artifactId>
+                        <version>1.0-SNAPSHOT</version>
+                        <scope>system</scope>
+                        <!-- 注意，这里是你的 dao 包地址 -->
+                        <systemPath>
+                            /Users/fengxiao/.m2/repository/com/smikevon/easy/dao/1.0-SNAPSHOT/dao-1.0-SNAPSHOT.jar
+                        </systemPath>
+                    </dependency>
+                </dependencies>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
