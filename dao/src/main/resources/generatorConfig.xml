@@ -8,7 +8,7 @@
     <properties resource="filters/filter-dev.properties"/>
 
     <context id="mysql" targetRuntime="MyBatis3">
-        
+
         <plugin type="org.mybatis.generator.plugins.EqualsHashCodePlugin"/>
         <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
         <plugin type="org.mybatis.generator.plugins.ToStringPlugin"/>
@@ -45,6 +45,13 @@
         <table tableName="%">
             <!-- 将下划线命名的 table column，转换为驼峰命名 -->
             <property name="useActualColumnNames" value="false"/>
+
+            <!-- 在生成的 insert 和 update 语句中，不在设定这两个字段，依据 column default 值设定 -->
+            <columnOverride column="create_time" isGeneratedAlways="true"/>
+            <columnOverride column="update_time" isGeneratedAlways="true"/>
+
+            <!--<columnOverride column="opt_type" javaType="com.smikevon.easy.model.enums.OptType"/>
+            <columnOverride column="is_delete" javaType="com.smikevon.easy.model.enums.DeleteType"/>-->
         </table>
     </context>
 

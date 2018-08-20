@@ -1,0 +1,13 @@
+#mybatis.type-aliases-package=com.neo.entity
+
+spring :
+  datasource :
+    driverClassName : com.mysql.jdbc.Driver
+    url : jdbc:mysql://localhost:3306/mbg_demo?useUnicode=true&characterEncoding=utf-8
+    username : root
+    password : 123456
+
+mybatis:
+  type-aliases-package: com.smikevon.easy.model.entity
+  #type-handlers-package: com.xiaomi.miui.ad.max.orm.typehandler
+  mapper-locations: classpath:mappers/**/*.xml

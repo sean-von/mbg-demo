@@ -2,6 +2,11 @@ mybatis-generator-demo
 ==
 > 使用 mybatis-generator 简化 curd 操作的开发，让技术更关注业务
 
+#### 版本要求
+- JDK 1.8+
+- Maven 3.2+ 
+- MyBatis 3
+
 #### 使用步骤
 
 1. cd dao && mvn clean install
@@ -11,7 +16,7 @@ mybatis-generator-demo
 
 #### Road Map
 
-1. 生成 model & xml.
+1. 生成 model & xml. √
 2. 定制 枚举类 TypeHandler，在 row mapper 中直接映射为枚举. 
 3. 生成 dao -> 定制通用 dao, 加入 page-helper 分页插件
 4. 集成 spring boot.
