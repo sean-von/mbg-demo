@@ -21,10 +21,9 @@ import com.smikevon.easy.model.annotation.MyBatisColumn;
  */
 public class CustomEnumTypeHandler<E extends Enum<E>> extends BaseTypeHandler<E> {
 
-    private Logger logger = Logger.getLogger(CustomEnumTypeHandler.class.getName());
-
     private final Map<Integer, E> lookup = new HashMap<>();
     private final Map<E, Integer> reverse = new HashMap<>();
+    private Logger logger = Logger.getLogger(CustomEnumTypeHandler.class.getName());
 
     public CustomEnumTypeHandler(Class<E> type) {
         if (type == null) {

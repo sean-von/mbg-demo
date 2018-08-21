@@ -1,9 +1,10 @@
 package com.smikevon.easy.model.entity;
 
-import com.smikevon.easy.model.enums.DeleteType;
-import com.smikevon.easy.model.enums.OptType;
 import java.io.Serializable;
 import java.util.Date;
+
+import com.smikevon.easy.model.enums.DeleteType;
+import com.smikevon.easy.model.enums.OptType;
 
 /**
  * WARNING : Auto Generated Code, do not Modify!
@@ -11,60 +12,54 @@ import java.util.Date;
  * Created by Mybatis Generator on 2018/08/21.
  */
 public class OptLog implements Serializable {
+    private static final long serialVersionUID = 1L;
     /**
      * 物理主键，Long型
      */
     private Long id;
-
     /**
      * 功能点
      */
     private Long item;
-
     /**
      * 操作类别 (1.增加 2.修改 3.删除)
      */
     private OptType optType;
-
     /**
      * 操作前值
      */
     private String oldValue;
-
     /**
      * 操作后值
      */
     private String newValue;
-
     /**
      * 关键词列表
      */
     private String keywords;
-
     /**
      * 操作者IP
      */
     private String ip;
-
     /**
      * 创建时间
      */
     private Date createTime;
-
     /**
      * 更新时间
      */
     private Date updateTime;
-
     /**
      * 软删除标识（0.未删除 1.已删除）
      */
     private DeleteType isDelete;
 
-    private static final long serialVersionUID = 1L;
-
     public Long getId() {
         return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public OptLog withId(Long id) {
@@ -72,12 +67,12 @@ public class OptLog implements Serializable {
         return this;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public Long getItem() {
         return item;
+    }
+
+    public void setItem(Long item) {
+        this.item = item;
     }
 
     public OptLog withItem(Long item) {
@@ -85,12 +80,12 @@ public class OptLog implements Serializable {
         return this;
     }
 
-    public void setItem(Long item) {
-        this.item = item;
-    }
-
     public OptType getOptType() {
         return optType;
+    }
+
+    public void setOptType(OptType optType) {
+        this.optType = optType;
     }
 
     public OptLog withOptType(OptType optType) {
@@ -98,12 +93,12 @@ public class OptLog implements Serializable {
         return this;
     }
 
-    public void setOptType(OptType optType) {
-        this.optType = optType;
-    }
-
     public String getOldValue() {
         return oldValue;
+    }
+
+    public void setOldValue(String oldValue) {
+        this.oldValue = oldValue == null ? null : oldValue.trim();
     }
 
     public OptLog withOldValue(String oldValue) {
@@ -111,12 +106,12 @@ public class OptLog implements Serializable {
         return this;
     }
 
-    public void setOldValue(String oldValue) {
-        this.oldValue = oldValue == null ? null : oldValue.trim();
-    }
-
     public String getNewValue() {
         return newValue;
+    }
+
+    public void setNewValue(String newValue) {
+        this.newValue = newValue == null ? null : newValue.trim();
     }
 
     public OptLog withNewValue(String newValue) {
@@ -124,12 +119,12 @@ public class OptLog implements Serializable {
         return this;
     }
 
-    public void setNewValue(String newValue) {
-        this.newValue = newValue == null ? null : newValue.trim();
-    }
-
     public String getKeywords() {
         return keywords;
+    }
+
+    public void setKeywords(String keywords) {
+        this.keywords = keywords == null ? null : keywords.trim();
     }
 
     public OptLog withKeywords(String keywords) {
@@ -137,12 +132,12 @@ public class OptLog implements Serializable {
         return this;
     }
 
-    public void setKeywords(String keywords) {
-        this.keywords = keywords == null ? null : keywords.trim();
-    }
-
     public String getIp() {
         return ip;
+    }
+
+    public void setIp(String ip) {
+        this.ip = ip == null ? null : ip.trim();
     }
 
     public OptLog withIp(String ip) {
@@ -150,12 +145,12 @@ public class OptLog implements Serializable {
         return this;
     }
 
-    public void setIp(String ip) {
-        this.ip = ip == null ? null : ip.trim();
-    }
-
     public Date getCreateTime() {
         return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 
     public OptLog withCreateTime(Date createTime) {
@@ -163,12 +158,12 @@ public class OptLog implements Serializable {
         return this;
     }
 
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
-
     public Date getUpdateTime() {
         return updateTime;
+    }
+
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
     }
 
     public OptLog withUpdateTime(Date updateTime) {
@@ -176,21 +171,17 @@ public class OptLog implements Serializable {
         return this;
     }
 
-    public void setUpdateTime(Date updateTime) {
-        this.updateTime = updateTime;
-    }
-
     public DeleteType getIsDelete() {
         return isDelete;
+    }
+
+    public void setIsDelete(DeleteType isDelete) {
+        this.isDelete = isDelete;
     }
 
     public OptLog withIsDelete(DeleteType isDelete) {
         this.setIsDelete(isDelete);
         return this;
-    }
-
-    public void setIsDelete(DeleteType isDelete) {
-        this.isDelete = isDelete;
     }
 
     @Override
@@ -206,15 +197,22 @@ public class OptLog implements Serializable {
         }
         OptLog other = (OptLog) that;
         return (this.getId() == null ? other.getId() == null : this.getId().equals(other.getId()))
-            && (this.getItem() == null ? other.getItem() == null : this.getItem().equals(other.getItem()))
-            && (this.getOptType() == null ? other.getOptType() == null : this.getOptType().equals(other.getOptType()))
-            && (this.getOldValue() == null ? other.getOldValue() == null : this.getOldValue().equals(other.getOldValue()))
-            && (this.getNewValue() == null ? other.getNewValue() == null : this.getNewValue().equals(other.getNewValue()))
-            && (this.getKeywords() == null ? other.getKeywords() == null : this.getKeywords().equals(other.getKeywords()))
-            && (this.getIp() == null ? other.getIp() == null : this.getIp().equals(other.getIp()))
-            && (this.getCreateTime() == null ? other.getCreateTime() == null : this.getCreateTime().equals(other.getCreateTime()))
-            && (this.getUpdateTime() == null ? other.getUpdateTime() == null : this.getUpdateTime().equals(other.getUpdateTime()))
-            && (this.getIsDelete() == null ? other.getIsDelete() == null : this.getIsDelete().equals(other.getIsDelete()));
+                && (this.getItem() == null ? other.getItem() == null : this.getItem().equals(other.getItem()))
+                && (this.getOptType() == null ? other.getOptType() == null
+                            : this.getOptType().equals(other.getOptType()))
+                && (this.getOldValue() == null ? other.getOldValue() == null
+                            : this.getOldValue().equals(other.getOldValue()))
+                && (this.getNewValue() == null ? other.getNewValue() == null
+                            : this.getNewValue().equals(other.getNewValue()))
+                && (this.getKeywords() == null ? other.getKeywords() == null
+                            : this.getKeywords().equals(other.getKeywords()))
+                && (this.getIp() == null ? other.getIp() == null : this.getIp().equals(other.getIp()))
+                && (this.getCreateTime() == null ? other.getCreateTime() == null
+                            : this.getCreateTime().equals(other.getCreateTime()))
+                && (this.getUpdateTime() == null ? other.getUpdateTime() == null
+                            : this.getUpdateTime().equals(other.getUpdateTime()))
+                && (this.getIsDelete() == null ? other.getIsDelete() == null
+                            : this.getIsDelete().equals(other.getIsDelete()));
     }
 
     @Override
