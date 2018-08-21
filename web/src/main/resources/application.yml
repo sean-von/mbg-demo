@@ -9,5 +9,5 @@ spring :
 
 mybatis:
   type-aliases-package: com.smikevon.easy.model.entity
-  #type-handlers-package: com.xiaomi.miui.ad.max.orm.typehandler
+  type-handlers-package: com.smikevon.easy.mbg.handler
   mapper-locations: classpath:mappers/**/*.xml

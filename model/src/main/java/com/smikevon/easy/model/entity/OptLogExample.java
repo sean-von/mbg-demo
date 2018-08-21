@@ -1,5 +1,7 @@
 package com.smikevon.easy.model.entity;
 
+import com.smikevon.easy.model.enums.DeleteType;
+import com.smikevon.easy.model.enums.OptType;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -235,52 +237,52 @@ public class OptLogExample {
             return (Criteria) this;
         }
 
-        public Criteria andOptTypeEqualTo(Integer value) {
+        public Criteria andOptTypeEqualTo(OptType value) {
             addCriterion("opt_type =", value, "optType");
             return (Criteria) this;
         }
 
-        public Criteria andOptTypeNotEqualTo(Integer value) {
+        public Criteria andOptTypeNotEqualTo(OptType value) {
             addCriterion("opt_type <>", value, "optType");
             return (Criteria) this;
         }
 
-        public Criteria andOptTypeGreaterThan(Integer value) {
+        public Criteria andOptTypeGreaterThan(OptType value) {
             addCriterion("opt_type >", value, "optType");
             return (Criteria) this;
         }
 
-        public Criteria andOptTypeGreaterThanOrEqualTo(Integer value) {
+        public Criteria andOptTypeGreaterThanOrEqualTo(OptType value) {
             addCriterion("opt_type >=", value, "optType");
             return (Criteria) this;
         }
 
-        public Criteria andOptTypeLessThan(Integer value) {
+        public Criteria andOptTypeLessThan(OptType value) {
             addCriterion("opt_type <", value, "optType");
             return (Criteria) this;
         }
 
-        public Criteria andOptTypeLessThanOrEqualTo(Integer value) {
+        public Criteria andOptTypeLessThanOrEqualTo(OptType value) {
             addCriterion("opt_type <=", value, "optType");
             return (Criteria) this;
         }
 
-        public Criteria andOptTypeIn(List<Integer> values) {
+        public Criteria andOptTypeIn(List<OptType> values) {
             addCriterion("opt_type in", values, "optType");
             return (Criteria) this;
         }
 
-        public Criteria andOptTypeNotIn(List<Integer> values) {
+        public Criteria andOptTypeNotIn(List<OptType> values) {
             addCriterion("opt_type not in", values, "optType");
             return (Criteria) this;
         }
 
-        public Criteria andOptTypeBetween(Integer value1, Integer value2) {
+        public Criteria andOptTypeBetween(OptType value1, OptType value2) {
             addCriterion("opt_type between", value1, value2, "optType");
             return (Criteria) this;
         }
 
-        public Criteria andOptTypeNotBetween(Integer value1, Integer value2) {
+        public Criteria andOptTypeNotBetween(OptType value1, OptType value2) {
             addCriterion("opt_type not between", value1, value2, "optType");
             return (Criteria) this;
         }
@@ -695,52 +697,52 @@ public class OptLogExample {
             return (Criteria) this;
         }
 
-        public Criteria andIsDeleteEqualTo(Integer value) {
+        public Criteria andIsDeleteEqualTo(DeleteType value) {
             addCriterion("is_delete =", value, "isDelete");
             return (Criteria) this;
         }
 
-        public Criteria andIsDeleteNotEqualTo(Integer value) {
+        public Criteria andIsDeleteNotEqualTo(DeleteType value) {
             addCriterion("is_delete <>", value, "isDelete");
             return (Criteria) this;
         }
 
-        public Criteria andIsDeleteGreaterThan(Integer value) {
+        public Criteria andIsDeleteGreaterThan(DeleteType value) {
             addCriterion("is_delete >", value, "isDelete");
             return (Criteria) this;
         }
 
-        public Criteria andIsDeleteGreaterThanOrEqualTo(Integer value) {
+        public Criteria andIsDeleteGreaterThanOrEqualTo(DeleteType value) {
             addCriterion("is_delete >=", value, "isDelete");
             return (Criteria) this;
         }
 
-        public Criteria andIsDeleteLessThan(Integer value) {
+        public Criteria andIsDeleteLessThan(DeleteType value) {
             addCriterion("is_delete <", value, "isDelete");
             return (Criteria) this;
         }
 
-        public Criteria andIsDeleteLessThanOrEqualTo(Integer value) {
+        public Criteria andIsDeleteLessThanOrEqualTo(DeleteType value) {
             addCriterion("is_delete <=", value, "isDelete");
             return (Criteria) this;
         }
 
-        public Criteria andIsDeleteIn(List<Integer> values) {
+        public Criteria andIsDeleteIn(List<DeleteType> values) {
             addCriterion("is_delete in", values, "isDelete");
             return (Criteria) this;
         }
 
-        public Criteria andIsDeleteNotIn(List<Integer> values) {
+        public Criteria andIsDeleteNotIn(List<DeleteType> values) {
             addCriterion("is_delete not in", values, "isDelete");
             return (Criteria) this;
         }
 
-        public Criteria andIsDeleteBetween(Integer value1, Integer value2) {
+        public Criteria andIsDeleteBetween(DeleteType value1, DeleteType value2) {
             addCriterion("is_delete between", value1, value2, "isDelete");
             return (Criteria) this;
         }
 
-        public Criteria andIsDeleteNotBetween(Integer value1, Integer value2) {
+        public Criteria andIsDeleteNotBetween(DeleteType value1, DeleteType value2) {
             addCriterion("is_delete not between", value1, value2, "isDelete");
             return (Criteria) this;
         }

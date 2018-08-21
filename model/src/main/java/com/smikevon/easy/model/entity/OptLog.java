@@ -1,12 +1,14 @@
 package com.smikevon.easy.model.entity;
 
+import com.smikevon.easy.model.enums.DeleteType;
+import com.smikevon.easy.model.enums.OptType;
 import java.io.Serializable;
 import java.util.Date;
 
 /**
  * WARNING : Auto Generated Code, do not Modify!
  * <p>
- * Created by Mybatis Generator on 2018/08/20.
+ * Created by Mybatis Generator on 2018/08/21.
  */
 public class OptLog implements Serializable {
     /**
@@ -22,7 +24,7 @@ public class OptLog implements Serializable {
     /**
      * 操作类别 (1.增加 2.修改 3.删除)
      */
-    private Integer optType;
+    private OptType optType;
 
     /**
      * 操作前值
@@ -57,7 +59,7 @@ public class OptLog implements Serializable {
     /**
      * 软删除标识（0.未删除 1.已删除）
      */
-    private Integer isDelete;
+    private DeleteType isDelete;
 
     private static final long serialVersionUID = 1L;
 
@@ -87,16 +89,16 @@ public class OptLog implements Serializable {
         this.item = item;
     }
 
-    public Integer getOptType() {
+    public OptType getOptType() {
         return optType;
     }
 
-    public OptLog withOptType(Integer optType) {
+    public OptLog withOptType(OptType optType) {
         this.setOptType(optType);
         return this;
     }
 
-    public void setOptType(Integer optType) {
+    public void setOptType(OptType optType) {
         this.optType = optType;
     }
 
@@ -178,16 +180,16 @@ public class OptLog implements Serializable {
         this.updateTime = updateTime;
     }
 
-    public Integer getIsDelete() {
+    public DeleteType getIsDelete() {
         return isDelete;
     }
 
-    public OptLog withIsDelete(Integer isDelete) {
+    public OptLog withIsDelete(DeleteType isDelete) {
         this.setIsDelete(isDelete);
         return this;
     }
 
-    public void setIsDelete(Integer isDelete) {
+    public void setIsDelete(DeleteType isDelete) {
         this.isDelete = isDelete;
     }
 

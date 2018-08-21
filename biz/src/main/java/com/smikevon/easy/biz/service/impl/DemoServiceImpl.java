@@ -6,6 +6,8 @@ import org.springframework.stereotype.Service;
 import com.smikevon.easy.biz.service.DemoService;
 import com.smikevon.easy.mbg.mapper.OptLogMapper;
 import com.smikevon.easy.model.entity.OptLog;
+import com.smikevon.easy.model.enums.DeleteType;
+import com.smikevon.easy.model.enums.OptType;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -25,11 +27,11 @@ public class DemoServiceImpl implements DemoService {
         optLog.setId(System.nanoTime());
         optLog.setIp("");
         optLog.setItem(1L);
-        optLog.setOptType(1);
+        optLog.setOptType(OptType.ADD);
         optLog.setKeywords("");
         optLog.setNewValue("new");
         optLog.setOldValue("old");
-        optLog.setIsDelete(0);
+        optLog.setIsDelete(DeleteType.NOT_DELETED);
         optLogMapper.insert(optLog);
         log.info("hello I'm service class");
     }

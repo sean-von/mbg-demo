@@ -95,16 +95,6 @@
     from opt_log
     where id = #{id,jdbcType=BIGINT}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-    delete from opt_log
-    where id = #{id,jdbcType=BIGINT}
-  </delete>
-  <delete id="deleteByExample" parameterType="com.smikevon.easy.model.entity.OptLogExample">
-    delete from opt_log
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-  </delete>
   <insert id="insert" parameterType="com.smikevon.easy.model.entity.OptLog">
     insert into opt_log (id, item, opt_type, 
       old_value, new_value, keywords, 

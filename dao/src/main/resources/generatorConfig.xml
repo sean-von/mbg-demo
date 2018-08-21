@@ -9,6 +9,17 @@
 
     <context id="mysql" targetRuntime="MyBatis3">
 
+        <!-- 生成的Java文件的编码 -->
+        <property name="javaFileEncoding" value="UTF-8"/>
+        <!-- 格式化java代码 -->
+        <property name="javaFormatter" value="org.mybatis.generator.api.dom.DefaultJavaFormatter"/>
+        <!-- 格式化XML代码 -->
+        <property name="xmlFormatter" value="org.mybatis.generator.api.dom.DefaultXmlFormatter"/>
+
+        <!-- beginningDelimiter和endingDelimiter：指明数据库的用于标记数据库对象名的符号，MYSQL默认是`反引号； -->
+        <property name="beginningDelimiter" value="`"/>
+        <property name="endingDelimiter" value="`"/>
+
         <plugin type="org.mybatis.generator.plugins.EqualsHashCodePlugin"/>
         <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
         <plugin type="org.mybatis.generator.plugins.ToStringPlugin"/>
@@ -34,6 +45,7 @@
 
         <!-- 标准写法 targetProject 应为 MAVEN,这里为了便于验证，将路径直接写到目的文件夹  -->
         <javaModelGenerator targetPackage="com.smikevon.easy.model.entity" targetProject="../model/src/main/java">
+            <!-- 在targetPackage的基础上，根据数据库的schema再生成一层package，最终生成的类放在这个package下，默认为false -->
             <property name="enableSubPackages" value="true"/>
             <property name="trimStrings" value="true"/>
         </javaModelGenerator>
@@ -42,7 +54,14 @@
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
 
-        <table tableName="%">
+        <!-- 默认这里填 XMLMAPPER -->
+        <javaClientGenerator type="com.smikevon.easy.mbg.custom.CustomJavaMapperGenerator"
+                             targetPackage="com.smikevon.easy.mbg.mapper" targetProject="src/main/java">
+            <property name="rootInterface" value="com.smikevon.easy.mbg.mapper.BaseMapper"/>
+        </javaClientGenerator>
+
+        <!-- 禁止物理删除数据 -->
+        <table tableName="%" enableDeleteByExample="false" enableDeleteByPrimaryKey="false">
             <!-- 将下划线命名的 table column，转换为驼峰命名 -->
             <property name="useActualColumnNames" value="false"/>
 
@@ -50,8 +69,8 @@
             <columnOverride column="create_time" isGeneratedAlways="true"/>
             <columnOverride column="update_time" isGeneratedAlways="true"/>
 
-            <!--<columnOverride column="opt_type" javaType="com.smikevon.easy.model.enums.OptType"/>
-            <columnOverride column="is_delete" javaType="com.smikevon.easy.model.enums.DeleteType"/>-->
+            <columnOverride column="opt_type" javaType="com.smikevon.easy.model.enums.OptType"/>
+            <columnOverride column="is_delete" javaType="com.smikevon.easy.model.enums.DeleteType"/>
         </table>
     </context>
 
