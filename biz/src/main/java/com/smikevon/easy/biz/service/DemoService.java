@@ -11,6 +11,8 @@ public interface DemoService {
 
     void sayHello();
 
+    void rollback();
+
     PageInfo<OptLog> getLogByPage(PageParam pageParam);
 
 }

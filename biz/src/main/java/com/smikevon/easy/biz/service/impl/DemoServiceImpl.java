@@ -5,6 +5,7 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.github.pagehelper.PageInfo;
 import com.github.pagehelper.page.PageMethod;
@@ -39,6 +40,14 @@ public class DemoServiceImpl implements DemoService {
         optLog.setIsDelete(DeleteType.NOT_DELETED);
         optLogMapper.insert(optLog);
         log.info("hello I'm service class");
+    }
+
+    @Override
+    @Transactional
+    public void rollback() {
+        sayHello();
+        log.info("now one opt log is prepare to commit!");
+        throw new RuntimeException("just roll back");
     }
 
     @Override

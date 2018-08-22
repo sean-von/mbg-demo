@@ -33,6 +33,12 @@ public class DemoController {
         return "Hello World";
     }
 
+    @GetMapping("rollback")
+    public String rollback() {
+        demoService.rollback();
+        return "Hello World";
+    }
+
     @GetMapping("list")
     public Result<PageInfo<OptLog>> list(PageParam pageParam) {
         return Result.success(demoService.getLogByPage(pageParam));
