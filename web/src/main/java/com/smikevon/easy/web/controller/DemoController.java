@@ -10,16 +10,22 @@ import com.smikevon.easy.biz.service.DemoService;
 import com.smikevon.easy.common.utils.PageParam;
 import com.smikevon.easy.common.utils.Result;
 import com.smikevon.easy.model.entity.OptLog;
+import com.smikevon.easy.web.config.CommonConfig;
+
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * Created by sean (smikevon@163.com) on 2018/8/20.
  */
+@Slf4j
 @RestController
 @RequestMapping("demo")
 public class DemoController {
 
     @Autowired
     private DemoService demoService;
+    @Autowired
+    private CommonConfig commonConfig;
 
     @GetMapping("hello")
     public String index() {
