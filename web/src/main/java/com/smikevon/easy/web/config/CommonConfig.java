@@ -61,7 +61,7 @@ public class CommonConfig {
                     this.workerId = Integer.valueOf(snowFlake[NumberUtils.INTEGER_ONE]);
                 }
             });
-            
+
             log.info("after common config is {}", toString());
             IdWorker.init(dataCenterId, workerId);
         } catch (Exception e) {

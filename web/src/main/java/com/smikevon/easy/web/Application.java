@@ -13,9 +13,8 @@ import com.smikevon.easy.web.config.CommonConfig;
  */
 @MapperScan("com.smikevon.easy.mbg.mapper")
 @ComponentScan("com.smikevon.easy")
-//@EnableAutoConfiguration
 @EnableConfigurationProperties({CommonConfig.class})
-@SpringBootApplication(scanBasePackages = "com.smikevon.easy")
+@SpringBootApplication
 public class Application {
 
     public static void main(String[] args) {

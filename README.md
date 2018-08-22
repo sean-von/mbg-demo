@@ -19,7 +19,7 @@ mybatis-generator-demo
 2. 定制 枚举类 TypeHandler，在 row mapper 中直接映射为枚举. √
 3. 生成 dao -> 定制通用 dao, 加入 page-helper 分页插件 √
 4. 集成 spring boot. √
-5. 接入自成长 id.
+5. 接入自成长 SnowFlakeId, 实现不同机器不同配置（词表法）. √
 6. 设置事务，主从分离.
 7. 定制带超时时间的 local cache.
 8. 引入 redis,设置通用集中式缓存.

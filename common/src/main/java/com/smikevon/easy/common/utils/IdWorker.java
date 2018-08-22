@@ -13,6 +13,9 @@ public class IdWorker {
 
     private static volatile Snowflake snowflake = null;
 
+    private IdWorker() {
+    }
+
     /**
      * 通过环境变量对基础配置进行初始化
      */
@@ -20,9 +23,6 @@ public class IdWorker {
         IdWorker.dataCenterId = dataCenterId;
         IdWorker.workerId = workerId;
         log.info(getSnowflake().toString());
-    }
-
-    private IdWorker() {
     }
 
     public static Long nextId() {
