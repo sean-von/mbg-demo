@@ -6,6 +6,8 @@ mybatis-generator-demo
 - JDK 1.8+
 - Maven 3.2+ 
 - MyBatis 3
+- Spring Boot 2.0.3
+
 
 #### 使用步骤
 
@@ -24,10 +26,12 @@ mybatis-generator-demo
 7. 定制带超时时间的 local cache.
 8. 引入 redis,设置通用集中式缓存.
 9. 定制校验 enum 类型 validator.
-10. 引入通用后台页面框架，实现列表、编辑页.
-11. 定制 excel 导入/导出控件.
-12. 配置 dubbo. 
-13. 最终成为一个 web 项目的通用底层架构.
+11. 定制配置式 excel 导入/导出控件.
+12. 引入通用后台页面框架，实现列表、编辑页.
+13. 引入 shiro，控制权限，细化到权限点，即页面内按钮的控制.
+14. 配置支持 zookeeper, 集中式配置.
+15. 配置 dubbo. 
+16. 最终成为一个 web 项目的通用底层架构.
 
 当前进度: 6
 
