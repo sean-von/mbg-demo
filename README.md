@@ -23,9 +23,10 @@ mybatis-generator-demo
 4. 集成 spring boot. √
 5. 接入自成长 SnowFlakeId, 实现不同机器不同配置（词表法）. √
 6. 设置事务. √
-7. 定制带超时时间的 local cache.
-8. 引入 redis,设置通用集中式缓存.
-9. 定制校验 enum 类型 validator.
+7. 设定日志配置，分离 invoke、biz、sql，为一次请求记录的日志，增加 logId.
+8. 定制带超时时间的 local cache.
+9. 引入 redis,设置通用集中式缓存.
+10. 定制校验 enum 类型 validator.
 11. 定制配置式 excel 导入/导出控件.
 12. 引入通用后台页面框架，实现列表、编辑页.
 13. 引入 shiro，控制权限，细化到权限点，即页面内按钮的控制.
