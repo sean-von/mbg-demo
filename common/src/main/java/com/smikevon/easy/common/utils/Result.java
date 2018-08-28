@@ -15,6 +15,7 @@ public class Result<DTO> implements Serializable {
     private int code;
     private DTO data;
     private String desc;
+    private String reqId;
 
     public static Result success() {
         return success(null);

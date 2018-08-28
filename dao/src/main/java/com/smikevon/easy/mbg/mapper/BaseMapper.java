@@ -11,10 +11,6 @@ public interface BaseMapper<ENTITY, EXAMPLE> {
 
     long countByExample(EXAMPLE example);
 
-    int deleteByExample(EXAMPLE example);
-
-    int deleteByPrimaryKey(Long id);
-
     int insert(ENTITY record);
 
     int insertSelective(ENTITY record);

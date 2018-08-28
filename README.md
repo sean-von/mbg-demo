@@ -23,9 +23,9 @@ mybatis-generator-demo
 4. 集成 spring boot. √
 5. 接入自成长 SnowFlakeId, 实现不同机器不同配置（词表法）. √
 6. 设置事务. √
-7. 设定日志配置，分离 invoke、biz、sql，为一次请求记录的日志，增加 logId.
+7. 设定日志配置，分离 invoke、biz、sql，为一次请求记录的日志，增加 logId. √
 8. 定制带超时时间的 local cache.
-9. 引入 redis,设置通用集中式缓存.
+9. 引入 redis,设置通用集中式缓存. 
 10. 定制校验 enum 类型 validator.
 11. 定制配置式 excel 导入/导出控件.
 12. 引入通用后台页面框架，实现列表、编辑页.
@@ -38,3 +38,9 @@ mybatis-generator-demo
 
 #### 妥协
 1. 暂不添加分库分表支持，因为现在很多解决方案都是屏蔽业务层感知的，在 web 和 DB 中间加一层，如 MyCat。
+
+#### 约定
+1. 单表读多写少的场景，使用 mybatis 的二级缓存，缓存工具使用 redis，例如权限表。不要使用一级缓存，会有脏读。
+
+#### 注意
+1. pom 中引入的 jackson 和 log 的几个 jar 包版本一定要保持一致，不然会出现各种奇怪问题。
