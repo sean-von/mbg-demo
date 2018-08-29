@@ -24,8 +24,8 @@ mybatis-generator-demo
 5. 接入自成长 SnowFlakeId, 实现不同机器不同配置（词表法）. √
 6. 设置事务. √
 7. 设定日志配置，分离 invoke、biz、sql，为一次请求记录的日志，增加 logId. √
-8. 引入 redis,设置通用集中式缓存.
-9. 设置以 redis 为缓存工具的二级缓存，设置注解式业务缓存.
+8. 引入 redis,设置通用集中式缓存. √
+9. 设置以 redis 为缓存工具的二级缓存，设置注解式业务缓存. 
 10. 定制校验 enum 类型 validator.
 11. 引入 shiro，控制权限，细化到权限点，即页面内按钮的控制.
 12. 定制配置式 excel 导入/导出控件.
@@ -34,7 +34,7 @@ mybatis-generator-demo
 15. 配置 dubbo. 
 16. 最终成为一个 web 项目的通用底层架构.
 
-当前进度: 7
+当前进度: 8
 
 #### 妥协
 1. 暂不添加分库分表支持，因为现在很多解决方案都是屏蔽业务层感知的，在 web 和 DB 中间加一层，如 MyCat。
@@ -44,3 +44,4 @@ mybatis-generator-demo
 
 #### 注意
 1. pom 中引入的 jackson 和 log 的几个 jar 包版本一定要保持一致，不然会出现各种奇怪问题。
+2. 作为 key 的对象，或者对之使用 SPEL 的对象，一定要继承 Serializable 接口。

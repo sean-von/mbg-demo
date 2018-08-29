@@ -15,4 +15,8 @@ public interface DemoService {
 
     PageInfo<OptLog> getLogByPage(PageParam pageParam);
 
+    Void clearPage();
+
+    OptLog getLog(Long logId);
+
 }

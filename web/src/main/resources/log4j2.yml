@@ -8,6 +8,8 @@ Configuration:
         value: trace
       - name: log.level.mbg-demo
         value: DEBUG
+      - name: log.level.cache
+        value: TRACE
       - name: log.path
         value: /data/logs/mbg-demo
       - name: project.name
@@ -36,6 +38,7 @@ Configuration:
             modulate: true
         DefaultRolloverStrategy:
           max: 1000
+
       - name: INVOKE_LOG
         ignoreExceptions: false
         fileName: ${log.path}/${project.name}-invoke.log
@@ -49,10 +52,25 @@ Configuration:
             modulate: true
         DefaultRolloverStrategy:
           max: 1000
+
       - name: SQL_LOG
         ignoreExceptions: false
         fileName: ${log.path}/${project.name}-sql.log
         filePattern: "${log.path}/$${date:yyyy-MM}/${project.name}-sql-%d{yyyy-MM-dd}-%i.log.gz"
+        PatternLayout:
+          pattern: "[%p][%d{yyyy-MM-dd HH:mm:ss.SSS}][logId=%X{request_log_id}][%t] - %m%n"
+          charset: "UTF-8"
+        Policies:
+          TimeBasedTriggeringPolicy:
+            interval: 1
+            modulate: true
+        DefaultRolloverStrategy:
+          max: 1000
+
+      - name: CACHE_LOG
+        ignoreExceptions: false
+        fileName: ${log.path}/${project.name}-cache.log
+        filePattern: "${log.path}/$${date:yyyy-MM}/${project.name}-cache-%d{yyyy-MM-dd}-%i.log.gz"
         PatternLayout:
           pattern: "[%p][%d{yyyy-MM-dd HH:mm:ss.SSS}][logId=%X{request_log_id}][%t] - %m%n"
           charset: "UTF-8"
@@ -76,15 +94,24 @@ Configuration:
         AppenderRef:
           - ref: CONSOLE
           - ref: INVOKE_LOG
+
       - name: com.smikevon.easy.mbg.mapper
         additivity: false
         level: ${sys:log.level.mbg-demo}
         AppenderRef:
           - ref: CONSOLE
           - ref: SQL_LOG
+
       - name: com.smikevon
         additivity: false
         level: ${sys:log.level.mbg-demo}
         AppenderRef:
           - ref: CONSOLE
           - ref: BIZ_LOG
+
+      - name: org.springframework.cache
+        additivity: false
+        level: ${sys:log.level.cache}
+        AppenderRef:
+          - ref: CONSOLE
+          - ref: CACHE_LOG
