@@ -45,4 +45,5 @@ mybatis-generator-demo
 #### 注意
 1. pom 中引入的 jackson 和 log 的几个 jar 包版本一定要保持一致，不然会出现各种奇怪问题。
 2. 作为 key 的对象，或者对之使用 SPEL 的对象，一定要继承 Serializable 接口。
-3. redis 做二级缓存时，要在 xml 文件设定 <cache> 标签，作用域为当前文件，如果同一 namespace 有多个文件，需加上 <cache-ref>。
+3. redis 做二级缓存时，要在 xml 文件设定 &lt;cache&gt;  标签，作用域为当前文件，如果同一 namespace 有多个文件，
+需加上 &lt;cache-ref&gt;。
