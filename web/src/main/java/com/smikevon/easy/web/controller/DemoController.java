@@ -1,5 +1,7 @@
 package com.smikevon.easy.web.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -57,6 +59,11 @@ public class DemoController {
     @GetMapping("info")
     public Result<OptLog> info(Long logId) {
         return Result.success(demoService.getLog(logId));
+    }
+
+    @GetMapping("all")
+    public Result<List<OptLog>> all() {
+        return Result.success(demoService.getAll());
     }
 
 }

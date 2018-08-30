@@ -1,5 +1,7 @@
 package com.smikevon.easy.biz.service;
 
+import java.util.List;
+
 import com.github.pagehelper.PageInfo;
 import com.smikevon.easy.common.utils.PageParam;
 import com.smikevon.easy.model.entity.OptLog;
@@ -20,5 +22,7 @@ public interface DemoService {
     OptLog getLog(Long logId);
 
     OptLog getById(Long logId);
+
+    List<OptLog> getAll();
 
 }

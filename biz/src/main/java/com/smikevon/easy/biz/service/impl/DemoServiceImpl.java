@@ -16,6 +16,7 @@ import com.smikevon.easy.common.utils.IdWorker;
 import com.smikevon.easy.common.utils.PageParam;
 import com.smikevon.easy.mbg.mapper.OptLogMapper;
 import com.smikevon.easy.model.entity.OptLog;
+import com.smikevon.easy.model.entity.OptLogExample;
 import com.smikevon.easy.model.enums.DeleteType;
 import com.smikevon.easy.model.enums.OptType;
 
@@ -77,6 +78,27 @@ public class DemoServiceImpl implements DemoService {
     @Override
     public OptLog getById(Long logId) {
         return optLogMapper.getById(logId);
+    }
+
+    /**
+     * 实验验证，并未产生脏读问题，即便在同一事物内，中间的插入操作也清除了 cache
+     *
+     * @return
+     */
+    @Override
+    @Transactional
+    public List<OptLog> getAll() {
+        all();
+        sayHello();
+        return all();
+    }
+
+    private List<OptLog> all() {
+        OptLogExample example = new OptLogExample();
+        example.createCriteria().andIsDeleteEqualTo(DeleteType.NOT_DELETED);
+        List<OptLog> list = optLogMapper.selectByExample(example);
+        log.info("数据大小为 {} ", list.size());
+        return list;
     }
 
 }
