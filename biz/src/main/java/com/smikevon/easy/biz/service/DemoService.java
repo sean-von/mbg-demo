@@ -19,4 +19,6 @@ public interface DemoService {
 
     OptLog getLog(Long logId);
 
+    OptLog getById(Long logId);
+
 }

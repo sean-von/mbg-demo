@@ -44,6 +44,11 @@ public class DemoController {
         return Result.success(demoService.getLogByPage(pageParam));
     }
 
+    @GetMapping("get")
+    public Result<OptLog> get(Long id) {
+        return Result.success(demoService.getById(id));
+    }
+
     @GetMapping("clear")
     public Result<Void> clear() {
         return Result.success(demoService.clearPage());

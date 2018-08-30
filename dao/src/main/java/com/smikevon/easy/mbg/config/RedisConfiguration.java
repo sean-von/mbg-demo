@@ -1,4 +1,4 @@
-package com.smikevon.easy.biz.config;
+package com.smikevon.easy.mbg.config;
 
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
@@ -35,6 +35,19 @@ import lombok.extern.slf4j.Slf4j;
 @ConditionalOnClass(RedisOperations.class)
 public class RedisConfiguration extends CachingConfigurerSupport {
 
+    public static Jackson2JsonRedisSerializer getJackson2JsonSerializer() {
+        Jackson2JsonRedisSerializer jackson2JsonRedisSerializer = new Jackson2JsonRedisSerializer(Object.class);
+        jackson2JsonRedisSerializer.setObjectMapper(getObjectMapper());
+        return jackson2JsonRedisSerializer;
+    }
+
+    public static ObjectMapper getObjectMapper() {
+        ObjectMapper om = new ObjectMapper();
+        om.setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.ANY);
+        om.enableDefaultTyping(ObjectMapper.DefaultTyping.NON_FINAL);
+        return om;
+    }
+
     @Bean
     public KeyGenerator keyGenerator() {
         return (target, method, params) -> {
@@ -49,11 +62,13 @@ public class RedisConfiguration extends CachingConfigurerSupport {
     }
 
     @Bean(name = "redisTemplate")
-    @SuppressWarnings("unchecked")
     @ConditionalOnMissingBean(name = "redisTemplate")
     public RedisTemplate<Object, Object> redisTemplate(RedisConnectionFactory redisConnectionFactory) {
         RedisTemplate<Object, Object> template = new RedisTemplate<>();
+        RedisSerializer<String> StringSerializer = new StringRedisSerializer();
         Jackson2JsonRedisSerializer jackson2JsonRedisSerializer = getJackson2JsonSerializer();
+        template.setKeySerializer(StringSerializer);
+        template.setHashKeySerializer(jackson2JsonRedisSerializer);
         template.setValueSerializer(jackson2JsonRedisSerializer);
         template.setHashValueSerializer(jackson2JsonRedisSerializer);
         template.setConnectionFactory(redisConnectionFactory);
@@ -67,30 +82,20 @@ public class RedisConfiguration extends CachingConfigurerSupport {
      */
     @Bean
     public CacheManager cacheManager(RedisConnectionFactory connectionFactory) {
-
         RedisSerializer<String> StringSerializer = new StringRedisSerializer();
         Jackson2JsonRedisSerializer jackson2JsonRedisSerializer = getJackson2JsonSerializer();
 
         // 配置序列化，如果不加 redis 内会出现乱码
         RedisCacheConfiguration config = RedisCacheConfiguration.defaultCacheConfig();
-        RedisCacheConfiguration redisCacheConfiguration = config
-                .serializeKeysWith(RedisSerializationContext.SerializationPair.fromSerializer(StringSerializer))
-                .serializeValuesWith(RedisSerializationContext.SerializationPair.fromSerializer(
-                        jackson2JsonRedisSerializer));
+        RedisCacheConfiguration redisCacheConfiguration = config.serializeKeysWith(RedisSerializationContext
+                .SerializationPair.fromSerializer(StringSerializer))
+                .serializeValuesWith(RedisSerializationContext.SerializationPair
+                        .fromSerializer(jackson2JsonRedisSerializer));
 
         RedisCacheManager cacheManager = RedisCacheManager.builder(connectionFactory)
                 .cacheDefaults(redisCacheConfiguration)
                 .build();
         return cacheManager;
-    }
-
-    public Jackson2JsonRedisSerializer getJackson2JsonSerializer() {
-        Jackson2JsonRedisSerializer jackson2JsonRedisSerializer = new Jackson2JsonRedisSerializer(Object.class);
-        ObjectMapper om = new ObjectMapper();
-        om.setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.ANY);
-        om.enableDefaultTyping(ObjectMapper.DefaultTyping.NON_FINAL);
-        jackson2JsonRedisSerializer.setObjectMapper(om);
-        return jackson2JsonRedisSerializer;
     }
 
 }

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.smikevon.easy.mbg.mapper.OptLogMapper">
+    <cache type="com.smikevon.easy.mbg.cache.MybatisRedisCache"/>
     <resultMap id="BaseResultMap" type="com.smikevon.easy.model.entity.OptLog">
         <id column="id" jdbcType="BIGINT" property="id"/>
         <result column="item" jdbcType="BIGINT" property="item"/>

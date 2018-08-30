@@ -74,4 +74,9 @@ public class DemoServiceImpl implements DemoService {
         return optLogMapper.selectByPrimaryKey(logId);
     }
 
+    @Override
+    public OptLog getById(Long logId) {
+        return optLogMapper.getById(logId);
+    }
+
 }
