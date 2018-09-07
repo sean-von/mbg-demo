@@ -26,7 +26,7 @@ mybatis-generator-demo
 7. 设定日志配置，分离 invoke、biz、sql，为一次请求记录的日志，增加 logId. √
 8. 引入 redis，设置通用集中式缓存，支持注解式标记缓存. √
 9. 设置 mybatis 的二级缓存，缓存到 redis，一个 namespace 内除去查询，其余操作均清除缓存. √
-10. 定制校验 enum 类型 validator.
+10. 定制校验 enum 类型 validator. √
 11. 引入 shiro/pac4j，控制权限，细化到权限点，即页面内按钮的控制.
 12. 支持分布式 session，使用 spring-session. 
 13. 定制配置式 excel 导入/导出控件.
@@ -35,7 +35,7 @@ mybatis-generator-demo
 16. 配置 dubbo. 
 17. 最终成为一个 web 项目的通用底层架构.
 
-当前进度: 9
+当前进度: 10
 
 #### 妥协
 1. 暂不添加分库分表支持，因为现在很多解决方案都是屏蔽业务层感知的，在 web 和 DB 中间加一层，如 MyCat。

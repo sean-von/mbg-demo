@@ -1,5 +1,7 @@
 package com.smikevon.easy.model.enums;
 
+import java.lang.reflect.Field;
+
 import com.smikevon.easy.model.annotation.MyBatisColumn;
 
 /**
@@ -21,4 +23,19 @@ public enum OptType {
         this.type = type;
         this.description = description;
     }
+
+    public static void main(String[] args) throws NoSuchFieldException, IllegalAccessException {
+        Field checkField = OptType.class.getDeclaredField("code");
+        System.out.println(checkField.getType());
+        if (!checkField.getType().isAssignableFrom(Integer.class)) {
+            throw new RuntimeException("检查字段应整型");
+        }
+
+        checkField.setAccessible(true);
+        for (Enum item : OptType.class.getEnumConstants()) {
+            System.out.println(checkField.get(item));
+        }
+
+    }
+
 }
