@@ -14,6 +14,10 @@
 
     <dependencies>
         <dependency>
+            <groupId>com.smikevon.easy</groupId>
+            <artifactId>model</artifactId>
+        </dependency>
+        <dependency>
             <groupId>org.jooq</groupId>
             <artifactId>jool</artifactId>
         </dependency>
@@ -48,6 +52,10 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-validation</artifactId>
         </dependency>
     </dependencies>
 

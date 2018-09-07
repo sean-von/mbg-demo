@@ -2,6 +2,8 @@ package com.smikevon.easy.web.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,6 +13,7 @@ import com.github.pagehelper.PageInfo;
 import com.smikevon.easy.biz.service.DemoService;
 import com.smikevon.easy.common.utils.PageParam;
 import com.smikevon.easy.common.utils.Result;
+import com.smikevon.easy.common.vo.SearchParam;
 import com.smikevon.easy.model.entity.OptLog;
 import com.smikevon.easy.web.config.CommonConfig;
 
@@ -64,6 +67,11 @@ public class DemoController {
     @GetMapping("all")
     public Result<List<OptLog>> all() {
         return Result.success(demoService.getAll());
+    }
+
+    @GetMapping("check")
+    public Result<Void> check(@Valid SearchParam param) {
+        return Result.success();
     }
 
 }
