@@ -33,3 +33,16 @@ pagehelper:
     reasonable: true
     supportMethodsArguments: true
     params: count=countSql
+
+security:
+  user:
+    name: user
+  basic:
+    enabled: false
+
+cas:
+  server:
+    url: https://cas.smikevon.com:8443/cas/
+  project:
+    name: mbgDemo
+    url: http://localhost:8080/

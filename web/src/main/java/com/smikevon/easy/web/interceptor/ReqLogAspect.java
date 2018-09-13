@@ -58,7 +58,7 @@ public class ReqLogAspect {
         return remoteAddress;
     }
 
-    @Around("execution(public * com.smikevon.easy.web..*.*(..))")
+    @Around("execution(public * com.smikevon.easy.web.controller..*.*(..))")
     public Object around(ProceedingJoinPoint pjp) throws Throwable {
         Long start = System.nanoTime();
 

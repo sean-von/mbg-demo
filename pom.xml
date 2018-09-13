@@ -71,6 +71,11 @@
                 <artifactId>spring-boot-starter-validation</artifactId>
                 <version>${spring-boot.version}</version>
             </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-security</artifactId>
+                <version>${spring-boot.version}</version>
+            </dependency>
             <dependency> <!-- 加上这个才能辨认到log4j2.yml文件 -->
                 <groupId>com.fasterxml.jackson.dataformat</groupId>
                 <artifactId>jackson-dataformat-yaml</artifactId>
@@ -189,6 +194,27 @@
                 <groupId>org.apache.commons</groupId>
                 <artifactId>commons-text</artifactId>
                 <version>1.4</version>
+            </dependency>
+            <dependency>
+                <groupId>org.pac4j</groupId>
+                <artifactId>pac4j-cas</artifactId>
+                <version>3.1.0</version>
+            </dependency>
+            <dependency>
+                <groupId>io.buji</groupId>
+                <artifactId>buji-pac4j</artifactId>
+                <version>4.0.0</version>
+                <exclusions>
+                    <exclusion>
+                        <artifactId>shiro-web</artifactId>
+                        <groupId>org.apache.shiro</groupId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.shiro</groupId>
+                <artifactId>shiro-spring</artifactId>
+                <version>1.4.0</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
